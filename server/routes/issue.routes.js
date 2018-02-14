@@ -8,8 +8,8 @@ router.get('/issues/:issueId', issueController.getSingleIssue);
 
 router.post('/issues', issueController.createIssue);
 
-router.delete('/issue/:issueId', issueController.deleteIssue);
+router.delete('/issues/:issueId', issueController.deleteIssue);
 
-router.patch('/issue/:issueId', issueController.updateIssue);
+router.patch('/issues/:issueId', issueController.updateIssue);
 
 module.exports = router;

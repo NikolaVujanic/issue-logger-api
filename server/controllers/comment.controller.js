@@ -30,8 +30,8 @@ exports.createComment = (req, res, next) => {
             { $addToSet: { comments: comment._id } }
         );
     })
-    .then(() => {
-        res.send('Comment saved!');
+    .then((issue) => {
+        res.send({issue});
     })
     .catch(err => next(err));
 };
