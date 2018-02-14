@@ -1,4 +1,3 @@
-// const bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
 var issueController = require('../controllers/issue.controller');

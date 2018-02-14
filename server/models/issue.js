@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var Issue = mongoose.model('Issue', {
+const IssueSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -20,7 +20,13 @@ var Issue = mongoose.model('Issue', {
     completedAt: {
         type: Number,
         default: null
-    }
+    },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 });
+
+var Issue = mongoose.model("Issue", IssueSchema);
 
 module.exports = {Issue};
