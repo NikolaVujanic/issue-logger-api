@@ -2,8 +2,17 @@ const bodyParser = require('body-parser');
 var {Comment} = require('../models/comment');
 var {Issue} = require('../models/issue');
 
-exports.getAllCommentsForIssue = (req, res) => {
-    console.log(req.body, res.body);
+exports.getAllCommentsForIssue = (req, res, next) => {
+    return (
+        Issue.findById(req.params.issueId)
+            // Populate issue's comments array
+            .populate('comments')
+            .exec()
+            .then((issue) => {
+                res.send(issue.comments);
+            })
+            .catch((e) => next(e))
+    );
 };
 
 exports.createComment = (req, res, next) => {
