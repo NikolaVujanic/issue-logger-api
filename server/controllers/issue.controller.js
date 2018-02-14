@@ -9,6 +9,14 @@ exports.getAllIssues = (req, res) => {
     });
 };
 
+exports.getSingleIssue = (req, res) => {
+    Issue.findById(req.params.issueId).then((issue) => {
+        res.send({issue});
+    }, (e) => {
+        res.status(400).send(e);
+    });
+};
+
 exports.createIssue = (req, res) => {
     var issue = new Issue({
         title: req.body.title,
@@ -20,4 +28,12 @@ exports.createIssue = (req, res) => {
     }, (e) => {
         res.status(400).send(e);
     });
+};
+
+exports.deleteIssue = (req, res) => {
+    
+};
+
+exports.updateIssue = (req, res) => {
+
 };
