@@ -7,9 +7,7 @@ var {Comment} = require('../models/comment');
 exports.getAllIssues = (req, res) => {
     Issue.find().then((issues) => {
         res.send({issues});
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    }).catch(e => res.status(400).send(e));
 };
 
 exports.getSingleIssue = (req, res) => {
@@ -21,9 +19,7 @@ exports.getSingleIssue = (req, res) => {
 
     Issue.findById(req.params.issueId).then((issue) => {
         res.send({issue});
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    }).catch(e => res.status(400).send(e));
 };
 
 exports.createIssue = (req, res) => {
@@ -34,9 +30,7 @@ exports.createIssue = (req, res) => {
 
     issue.save().then((issue) => {
         res.send({issue});
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    }).catch(e => res.status(400).send(e));
 };
 
 exports.deleteIssue = (req, res) => {
@@ -56,9 +50,7 @@ exports.deleteIssue = (req, res) => {
 
         // Remove all attached comments
         return Comment.remove({_id: {$in:issue.comments}});
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    }).catch(e => res.status(400).send(e));
 };
 
 exports.updateIssue = (req, res) => {
@@ -84,7 +76,5 @@ exports.updateIssue = (req, res) => {
         }
 
         res.send({issue});
-    }).catch((e) => {
-        res.status(400).send(e);
-    });
+    }).catch(e => res.status(400).send(e));
 };
