@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const PORT = 3000;
 
 var {mongoose} = require('./db/db');
 var issueRouter = require('./routes/issue.routes');
@@ -26,6 +27,8 @@ app.use(commentRouter);
 app.use(uploadRouter);
 app.use(downloadRouter);
 
-app.listen(3000, () => {
-    console.log('Started on port 3000');
+app.listen(PORT, () => {
+    console.log(`Started on port ${PORT}`);
 });
+
+module.exports = {app};
