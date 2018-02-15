@@ -1,9 +1,21 @@
+const {ObjectID} = require('mongodb');
+
+var {Issue} = require('./../models/issue');
+
 exports.uploadFile = (req, res) => {
-    console.log(req.body, req.files);
 
-    // findAndUpdate 
-    // req.params.issueId wrapp in new ObjectId()
-    // attach array of files.path to Issue.files
+    var {issueId} = req.params;
 
-    res.status(200).send('File uploaded!');
+    if(!ObjectID.isValid(issueId)) {
+        return res.status(404).send();
+    }
+
+    // Issue.findById(issueId).then((issue) => {
+    //     issue.files.push(req.files.file);
+    //     return issue.save();
+    // }).then((data) => {
+    //     res.send('Fisnihed');
+    // }).catch((e) => {
+    //     res.status(400).send(e);
+    // });
 };

@@ -6,7 +6,7 @@ var multiparty = require('connect-multiparty');
 var multipartyMiddleware = multiparty({
     uploadDir: './uploads/'
 });
-// '/upload/:issueId'
-router.post('/upload', multipartyMiddleware, uploadController.uploadFile);
+
+router.post('/upload/:issueId', multipartyMiddleware, uploadController.uploadFile);
 
 module.exports = router;

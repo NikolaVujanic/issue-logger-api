@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
 
 var {Issue} = require('../models/issue');
